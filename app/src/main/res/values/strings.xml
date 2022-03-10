@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AppMovie</string>
+    <string name="THE_MOVIE_DB_API_TOKEN">3f2f4ed13e4cd01dd3d7ad269ac83edf</string>
+</resources>
