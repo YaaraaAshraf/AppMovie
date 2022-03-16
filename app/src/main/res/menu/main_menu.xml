@@ -22,9 +22,9 @@
         android:title="TopRated"
         android:orderInCategory="3"
         app:showAsAction="never"/>
-<!--    <item-->
-<!--        android:id="@+id/action_sort_favourites"-->
-<!--        android:title="Latest"-->
-<!--        android:orderInCategory="4"-->
-<!--        app:showAsAction="never"/>-->
+    <item
+        android:id="@+id/favourites"
+        android:title="FavouriteList"
+        android:orderInCategory="4"
+        app:showAsAction="never"/>
 </menu>

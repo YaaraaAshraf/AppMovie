@@ -8,10 +8,12 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.Database.FavoriteEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +38,37 @@ class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> imple
     public void onBindViewHolder(final MovieAdapter.MyViewHolder viewHolder, int i) {
         viewHolder.title.setText(movieList.get(i).getTitle());
         String poster = "https://image.tmdb.org/t/p/w500" + movieList.get(i).getPosterPath();
-
         Glide.with(mContext)
                 .load(poster)
                 .into(viewHolder.img);
+
+        if (ListActivity.favoriteDatabase.favoriteDao().isFavorite(movieList.get(i).getId()) == 1)
+            viewHolder.fav_btn.setImageResource(R.drawable.ic_favorite);
+        else
+            viewHolder.fav_btn.setImageResource(R.drawable.ic_favorite_border);
+
+        viewHolder.fav_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FavoriteEntity favoriteEntity = new FavoriteEntity();
+                int id = movieList.get(i).getId();
+                String image = movieList.get(i).getPosterPath();
+                String name = movieList.get(i).getTitle();
+                favoriteEntity.setId(id);
+                favoriteEntity.setImage(image);
+                favoriteEntity.setName(name);
+
+                if (ListActivity.favoriteDatabase.favoriteDao().isFavorite(id) != 1) {
+                    viewHolder.fav_btn.setImageResource(R.drawable.ic_favorite);
+                    ListActivity.favoriteDatabase.favoriteDao().addData(favoriteEntity);
+                    Toast.makeText(mContext,"Add to Favourite",Toast.LENGTH_LONG).show();
+                } else {
+                    viewHolder.fav_btn.setImageResource(R.drawable.ic_favorite_border);
+                    ListActivity.favoriteDatabase.favoriteDao().delete(favoriteEntity);
+                    Toast.makeText(mContext,"Delete From Favourite",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
     @Override
     public int getItemCount() {
@@ -76,11 +105,14 @@ class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> imple
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
         public ImageView img;
+        ImageView fav_btn;
 
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             img = (ImageView) view.findViewById(R.id.imageview);
+            fav_btn=(ImageView)view.findViewById(R.id.img_favorite);
+
         }
     }
 }

@@ -7,27 +7,27 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
 import java.util.List;
-class UpcomingMovieAdapter extends RecyclerView.Adapter<UpcomingMovieAdapter.MyViewHolder> {
+
+class TopRatedAdapter extends RecyclerView.Adapter<TopRatedAdapter.MyViewHolder> {
     private Context mContext;
     private List<MovieModel> movieList;
-    public UpcomingMovieAdapter(Context mContext, List<MovieModel> movieList) {
+    public TopRatedAdapter(Context mContext, List<MovieModel> movieList) {
         this.mContext = mContext;
         this.movieList = movieList;
     }
     @Override
-    public UpcomingMovieAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public TopRatedAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.upcoming_item, viewGroup, false);
-        return new MyViewHolder(view);
+                .inflate(R.layout.top_rateditem, viewGroup, false);
+        return new TopRatedAdapter.MyViewHolder(view);
     }
     @Override
-    public void onBindViewHolder(final UpcomingMovieAdapter.MyViewHolder viewHolder, int i) {
+    public void onBindViewHolder(final TopRatedAdapter.MyViewHolder viewHolder, int i) {
         viewHolder.title.setText(movieList.get(i).getTitle());
         String poster = "https://image.tmdb.org/t/p/w500" + movieList.get(i).getPosterPath();
         Glide.with(mContext)
@@ -44,8 +44,9 @@ class UpcomingMovieAdapter extends RecyclerView.Adapter<UpcomingMovieAdapter.MyV
 
         public MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.title_movie);
+            title = (TextView) view.findViewById(R.id.top_rated_movie);
             img = (ImageView) view.findViewById(R.id.image_view);
         }
     }
 }
+

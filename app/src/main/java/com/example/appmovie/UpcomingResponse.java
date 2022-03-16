@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-
 class UpcomingResponse implements Parcelable {
     @SerializedName("results")
     private List<MovieModel> results;
@@ -43,4 +42,3 @@ class UpcomingResponse implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
     }
 }
-

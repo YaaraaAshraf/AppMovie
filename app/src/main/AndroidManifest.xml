@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppMovie"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UpcomingList"></activity>
+        <activity android:name=".TopRatedList"></activity>
+        <activity android:name="com.example.Database.FavouriteList" />
+        <activity android:name=".UpcomingList" />
         <activity android:name=".ListActivity" />
         <activity android:name=".MainActivity">
 

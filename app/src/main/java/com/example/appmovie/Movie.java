@@ -12,10 +12,11 @@ class Movie implements Parcelable {
     private String posterPath;
     @SerializedName("title")
     private String title;
-
-    public Movie(String posterPath, String title) {
+    private int id;
+    public Movie(String posterPath, String title,int id) {
         this.posterPath = posterPath;
         this.title = title;
+        this.id=id;
     }
     public Movie(){
 
@@ -36,6 +37,16 @@ class Movie implements Parcelable {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+
 
     protected Movie(Parcel in) {
         posterPath = in.readString();

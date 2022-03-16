@@ -14,22 +14,20 @@
         android:padding="5dp">
 
         <ImageView
-            android:id="@+id/imageview"
+            android:id="@+id/imageview_fav"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:src="@mipmap/ic_launcher" />
 
-
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_weight="1"
+
             >
 
-
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/title_fav"
                 android:layout_width="157dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -37,16 +35,6 @@
                 android:text="title"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/img_favorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="70dp"
-                android:src="@drawable/ic_favorite_border" />
-
-
         </LinearLayout>
 
     </LinearLayout>
